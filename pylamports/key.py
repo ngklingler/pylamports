@@ -18,10 +18,3 @@ class key:
                                    hashEncode(self.secretKey[i][1])))
         self.secretKey = tuple(self.secretKey)
         self.publicKey = tuple(self.publicKey)
-
-    def getSecretHex(self):
-        secretKeyHex = []
-        for i in range(256):
-            secretKeyHex.append((hex(self.secretKey[i][0])[2:],
-                                 hex(self.secretKey[i][1])[2:]))
-        return tuple(secretKeyHex)
