@@ -2,8 +2,9 @@ import secrets
 import hashlib
 
 
-def hashEncode(number):
-    return hashlib.sha256(str(number).encode()).hexdigest()
+def hashEncode(hexString):
+    """Helper function to encode and hash hexString and return a hexString"""
+    return hashlib.sha256(hexString.encode()).hexdigest()
 
 
 def hexToBin(hexString):
@@ -30,6 +31,8 @@ class key:
         self.publicKey = tuple(self.publicKey)
 
     def signMessageHash(self, messageHash):
+        """signs a 256 bit hash using the secret key, returns a signature tuple
+        """
         binString = hexToBin(messageHash)
         signatureArray = []
         for i in range(len(binString)):
