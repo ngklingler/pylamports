@@ -2,9 +2,9 @@ import secrets
 import hashlib
 
 
-def hashEncode(hexString):
-    """Helper function to encode and hash hexString and return a hexString"""
-    return hashlib.sha256(hexString.encode()).hexdigest()
+def hashEncode(string):
+    """Helper function to encode and hash string and return a hex string"""
+    return hashlib.sha3_256(string.encode()).hexdigest()
 
 
 def hexToBin(hexString):
@@ -22,9 +22,10 @@ class key:
     def __init__(self):
         self.secretKey = []
         self.publicKey = []
+        self.seed = hex(secrets.randbits(256))[2:]
         for i in range(256):
-            self.secretKey.append((hex(secrets.randbits(256))[2:],
-                                   hex(secrets.randbits(256))[2:]))
+            self.secretKey.append((hashEncode(self.seed + "a" + str(i)),
+                                   hashEncode(self.seed + "b" + str(i))))
             self.publicKey.append((hashEncode(self.secretKey[i][0]),
                                    hashEncode(self.secretKey[i][1])))
         self.secretKey = tuple(self.secretKey)
