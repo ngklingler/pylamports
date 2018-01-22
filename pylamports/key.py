@@ -30,13 +30,3 @@ class key:
                                    hashEncode(self.secretKey[i][1])))
         self.secretKey = tuple(self.secretKey)
         self.publicKey = tuple(self.publicKey)
-
-    def signMessageHash(self, messageHash):
-        """signs a 256 bit hash using the secret key, returns a signature tuple
-        """
-        binString = hexToBin(messageHash)
-        signatureArray = []
-        for i in range(len(binString)):
-            bit = int(binString[i])
-            signatureArray.append(self.secretKey[i][bit])
-        return tuple(signatureArray)
