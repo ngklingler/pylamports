@@ -11,3 +11,4 @@ class sign:
         for i in range(len(self.message)):
             bit = int(self.message[i])
             self.signature.append(self.key[i][bit])
+        self.signature = tuple(self.signature)
