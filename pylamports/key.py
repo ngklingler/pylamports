@@ -24,8 +24,8 @@ class key:
         self.publicKey = []
         self.seed = hex(secrets.randbits(256))[2:]
         for i in range(256):
-            self.secretKey.append((hashEncode(self.seed + "a" + str(i)),
-                                   hashEncode(self.seed + "b" + str(i))))
+            self.secretKey.append((hashEncode(self.seed + "0" + str(i)),
+                                   hashEncode(self.seed + "1" + str(i))))
             self.publicKey.append((hashEncode(self.secretKey[i][0]),
                                    hashEncode(self.secretKey[i][1])))
         self.secretKey = tuple(self.secretKey)
