@@ -6,7 +6,8 @@ Read more about Lamport signatures [here.](https://en.wikipedia.org/wiki/Lamport
 Right now I just have the key class, which generates a key pair and allows you to sign a message with it.
 
 ### To-do list:
-* methods in key class to print public or private key to file
+* method in key class to print publicKey to file
+* don't auto make keys if no seed, add option for seed file too
 * method in key class to print signature to file with messages
 * separate signature method to sign file and generate separate signature file vs sign string and store string and signature together as text
 * eventually build a class to implement the [Merkle signature scheme](https://en.wikipedia.org/wiki/Merkle_signature_scheme)
