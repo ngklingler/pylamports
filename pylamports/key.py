@@ -20,19 +20,27 @@ def hexToBin(hexString):
 class key:
 
     def __init__(self, seed=hex(secrets.randbits(256))[2:]):
+        self.seed = seed
+        self.__generateKeys()
+        self.secretKey = tuple(self.secretKey)
+        self.publicKey = tuple(self.publicKey)
+
+    def saveSeed(self, filename="lamportSeed.sec"):
+        seedFile = open(filename, "w")
+        seedFile.write(self.seed)
+        seedFile.close()
+
+    def getSeed(self, filename="lamportSeed.sec"):
+        seedFile = open(filename, "r")
+        self.seed = seedFile.readline()
+        self.seed = self.seed[:64]
+        self.__generateKeys()
+
+    def __generateKeys(self):
         self.secretKey = []
         self.publicKey = []
-        self.seed = seed
         for i in range(256):
             self.secretKey.append((hashEncode(self.seed + "0" + str(i)),
                                    hashEncode(self.seed + "1" + str(i))))
             self.publicKey.append((hashEncode(self.secretKey[i][0]),
                                    hashEncode(self.secretKey[i][1])))
-        self.secretKey = tuple(self.secretKey)
-        self.publicKey = tuple(self.publicKey)
-
-    def saveSeed(self, filename="lamportSeed"):
-        filename += ".sec"
-        secretKeyFile = open(filename, "w")
-        secretKeyFile.write(self.seed)
-        secretKeyFile.close()
