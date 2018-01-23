@@ -3,7 +3,7 @@ Implements Lamport signatures with keypair creation, signing of messages, and ve
 
 Read more about Lamport signatures [here.](https://en.wikipedia.org/wiki/Lamport_signature)
 
-Right now I just have the key class, which generates a key pair and allows you to sign a message with it.
+There are currently three files, one for the key class, one for the sign class, and one to verify signatures.
 
 ### To-do list:
 * method in key class to print publicKey to file
