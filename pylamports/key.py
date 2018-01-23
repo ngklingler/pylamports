@@ -19,10 +19,10 @@ def hexToBin(hexString):
 
 class key:
 
-    def __init__(self):
+    def __init__(self, seed=hex(secrets.randbits(256))[2:]):
         self.secretKey = []
         self.publicKey = []
-        self.seed = hex(secrets.randbits(256))[2:]
+        self.seed = seed
         for i in range(256):
             self.secretKey.append((hashEncode(self.seed + "0" + str(i)),
                                    hashEncode(self.seed + "1" + str(i))))
@@ -30,3 +30,7 @@ class key:
                                    hashEncode(self.secretKey[i][1])))
         self.secretKey = tuple(self.secretKey)
         self.publicKey = tuple(self.publicKey)
+
+    def seedHexString(self):
+        """will take seed and encode it as a base64 string"""
+        return self.seed
