@@ -6,6 +6,7 @@ Read more about Lamport signatures [here.](https://en.wikipedia.org/wiki/Lamport
 There are currently three files, one for the key class, one for the sign class, and one to verify signatures.
 
 ### To-do list:
+* switch to b64 from hex so things can be stored in smaller ASCII
 * method in key class to print publicKey to file
 * verify should differentiate between file and tuple form of publicKey
 * method in key class to print signature to file with messages
