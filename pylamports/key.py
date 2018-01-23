@@ -1,5 +1,6 @@
 import secrets
 import hashlib
+import fnmatch
 
 
 def hashEncode(string):
@@ -20,8 +21,11 @@ def hexToBin(hexString):
 class key:
 
     def __init__(self, seed=hex(secrets.randbits(256))[2:]):
-        self.seed = seed
-        self.__generateKeys()
+        if fnmatch.fnmatch(seed, "*.*"):
+            self.getSeed(seed)
+        else:
+            self.seed = seed
+            self.__generateKeys()
         self.secretKey = tuple(self.secretKey)
         self.publicKey = tuple(self.publicKey)
 
