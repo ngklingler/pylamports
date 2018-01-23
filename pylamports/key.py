@@ -31,6 +31,8 @@ class key:
         self.secretKey = tuple(self.secretKey)
         self.publicKey = tuple(self.publicKey)
 
-    def seedHexString(self):
-        """will take seed and encode it as a base64 string"""
-        return self.seed
+    def saveSeed(self, filename="secretLamportKey"):
+        filename += ".sec"
+        secretKeyFile = open(filename, "w")
+        secretKeyFile.write(self.seed)
+        secretKeyFile.close()
