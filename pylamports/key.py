@@ -12,9 +12,8 @@ def hexToBin(hexString):
     """takes a hex string, converts it to a binary string, trims the '0b'
     prefix, and pads it with leading zeroes to ensure a 256 bit length"""
     binaryString = bin(int(hexString, 16))[2:]
-    if len(binaryString) < 256:
-        prefix = "0" * (256 - len(binaryString))
-        binaryString = prefix + binaryString
+    prefix = "0" * (256 - len(binaryString))
+    binaryString = prefix + binaryString
     return binaryString
 
 
