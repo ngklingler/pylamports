@@ -8,15 +8,6 @@ def hashEncode(string):
     return hashlib.sha3_256(string.encode()).hexdigest()
 
 
-def hexToBin(hexString):
-    """takes a hex string, converts it to a binary string, trims the '0b'
-    prefix, and pads it with leading zeroes to ensure a 256 bit length"""
-    binaryString = bin(int(hexString, 16))[2:]
-    prefix = "0" * (256 - len(binaryString))
-    binaryString = prefix + binaryString
-    return binaryString
-
-
 class key:
 
     def __init__(self, seed=hex(secrets.randbits(256))[2:]):
