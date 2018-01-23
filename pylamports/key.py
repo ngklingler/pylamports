@@ -31,7 +31,7 @@ class key:
         self.secretKey = tuple(self.secretKey)
         self.publicKey = tuple(self.publicKey)
 
-    def saveSeed(self, filename="secretLamportKey"):
+    def saveSeed(self, filename="lamportSeed"):
         filename += ".sec"
         secretKeyFile = open(filename, "w")
         secretKeyFile.write(self.seed)
