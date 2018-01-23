@@ -7,8 +7,10 @@ There are currently three files, one for the key class, one for the sign class, 
 
 ### To-do list:
 * switch to b64 from hex so things can be stored in smaller ASCII
-* method in key class to print publicKey to file
+* for key class
+    * print public key to file
+    * remove sign class and put an attribute in key class self.sign
+    * print self.sign, update it, save to file
 * verify should differentiate between file and tuple form of publicKey
-* method in key class to print signature to file with messages
-* separate signature method to sign file and generate separate signature file vs sign string and store string and signature together as text
+    * maybe get rid of tuple form all together for both keys
 * eventually build a class to implement the [Merkle signature scheme](https://en.wikipedia.org/wiki/Merkle_signature_scheme)
