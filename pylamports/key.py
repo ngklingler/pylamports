@@ -29,6 +29,7 @@ class key:
     def getSeed(self, filename="lamportSeed.sec"):
         seedFile = open(filename, "r")
         self.seed = seedFile.readline()
+        # gunna have to be fixed from [:64] once base 64
         self.seed = self.seed[:64]
         self.__generateKeys()
 
